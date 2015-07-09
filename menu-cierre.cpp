@@ -66,7 +66,7 @@ static void activate (GtkApplication *app,
 
 	//Propiedades de la ventana
 	window = gtk_application_window_new (app);
-	gtk_window_set_title (GTK_WINDOW (window), "Menú de Apagado");
+	gtk_window_set_title (GTK_WINDOW (window), "Menú de Cierre");
 	gtk_window_set_resizable (GTK_WINDOW (window),FALSE);
 	gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
 	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
@@ -81,10 +81,7 @@ static void activate (GtkApplication *app,
 	
 	event_box = gtk_event_box_new ();
 	
-	char user[200];
-	strcpy (user,"/home/");
-	strcat (user,getenv ("USER"));
-	strcat (user,"/.icons/close.png");
+	char user[100] = "/usr/share/menu-cierre/close.png";
 	close = gtk_image_new_from_file (user);
 	
 	gtk_widget_set_size_request (button_box, 600, 120);
