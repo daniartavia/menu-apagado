@@ -23,24 +23,30 @@ int detecta () {
 static void ejecuta_apaga () {
 	int resultado = detecta();
 	if (resultado == 2) {
-		//printf("Es openrc\n");
+		//Si es OpenRC
 		system("sudo mcu -ao");
 	} else if (resultado == 3) {
-		//printf("Es systemd\n");
+		//Si es Sytemd
 		system("sudo mcu -as");
 	} else if (resultado == 4) {
-		printf("No es ninguno de los 2\n");
+		//Si no se reconoce
+		printf("Init no reconocido, probando con 'shutdown'\n");
+		system("sudo mcu -ag");
 	}
 }
 
 static void ejecuta_reinicia () {
 	int resultado = detecta();
 	if (resultado == 2) {
+		//Si es OpenRC
 		system("sudo mcu -ro");
 	} else if (resultado == 3) {
+		//Si es Sytemd
 		system("sudo mcu -rs");
 	} else if (resultado == 4) {
-		printf("No es ninguno de los 2\n");
+		//Si no se reconoce
+		printf("Init no reconocido, probando con 'shutdown'\n");
+		system("sudo mcu -rg");
 	}
 }
 
